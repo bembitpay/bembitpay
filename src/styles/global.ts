@@ -4,15 +4,15 @@ import { device, size } from "./device";
 export default createGlobalStyle`
 
   * {
-    @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Georama:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
     margin: 0;
     padding: 0;
     outline: 0;
     box-sizing: border-box;
 
     font-size: 14px;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Roboto', sans-serif !important;
     font-style: normal;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
@@ -21,22 +21,59 @@ export default createGlobalStyle`
     transition:0.3s;
     
   };
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georama' !important;
+  }
+
   h1 {
     font-style: normal;
-    font-weight: normal;
+    font-weight: 300;
     font-size: 35px;
     line-height: 43px;
   }
 
-  h2{
+  h2 {
     font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 25px;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 125%;
+
+    ${device.mobileSmall} {
+      font-size: 28px;
+    }
+  }
+
+  h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 125%;
+
+    ${device.mobileSmall} {
+      font-size: 22px;
+    }
+  }
+
+  h4 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 125%;
+    
+    ${device.mobileSmall} {
+      font-size: 20px;
+    }
+  }
+
+  h5 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
   }
 
   ul > li, p {
-    font-family: 'Open Sans', sans-serif !important;   
+    font-family: 'Roboto', sans-serif !important;   
   }
 
   ul {
@@ -98,16 +135,6 @@ export default createGlobalStyle`
    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif */
   };
 
-  input{
-    border: 0;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    width: 100%;
-    padding: 10px 20px;
-    :focus{
-      border-bottom: 1px solid rgba(0,0,0,0.5);
-    }
-  };
-
   .container-app {
     padding: 0 5%;
   }
@@ -117,7 +144,7 @@ export default createGlobalStyle`
     min-height:500px;
   }
   .form-control {
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Roboto', sans-serif !important;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;

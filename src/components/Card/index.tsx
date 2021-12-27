@@ -7,10 +7,11 @@ function CardComponent({
   title,
   titleElement,
   subtitle,
-  children
+  children,
+  style,
 }: CardProps): ReactElement {
   return (
-    <Card>
+    <Card style={style}>
       <h2 className="text-center">{title}</h2>
       <p className="text-center">{subtitle}</p>
 

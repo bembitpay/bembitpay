@@ -8,8 +8,10 @@ import {
 } from "../../store/modules/general/actions";
 import {} from "react-router-dom";
 import { Create } from "../../store/modules/sale/actions";
-import { Receipt, ReceiptWithdraw, Button, InputGroup, Card, Link  } from "../../components";
+import { Receipt, ReceiptWithdraw, Button, InputGroup, Card } from "../../components";
+import Accordion from "../../components/Accordion";
 
+import { BsArrowRight, BsCurrencyBitcoin} from "react-icons/bs";
 
 import {
   Container,
@@ -18,7 +20,14 @@ import {
   ButtonContainer,
   Content,
   ContainerButton,
-  Title
+  Title,
+  Link,
+  HeroContainer,
+  HowToUseContainer,
+  CapTokenCointainer,
+  SocialMediaContainer,
+  NewsletterContainer,
+  FaqContainer,
 } from "./styles";
 
 import { TokenPrice, LabelWallet } from "../../pages/Sales/styles";
@@ -71,38 +80,11 @@ function WithdrawCancel(): ReactElement {
       alert("quantidade é obrigatório");
       return;
     }
-    if (name === "") {
-      alert("name é obrigatório");
-      return;
-    }
-    if (email === "") {
-      alert("email é obrigatório");
-      return;
-    }
-    if (phone === "") {
-      alert("phone é obrigatório");
-      return;
-    }
 
     if (address === "") {
       alert("endereço de carteira é obrigatório");
       return;
     }
-
-    if (address === "") {
-      alert("endereço de carteira é obrigatório");
-      return;
-    }
-
-    if (document == "" || !ValidateCpf(document)) {
-      alert("Informe um CPF válido");
-      return;
-    } 
-
-    if (birth_date == "" || !ValidateDate(birth_date)) {
-      alert("Informe uma data de nascimento válida");
-      return;
-    } 
 
     if (!/^0x[a-fA-F0-9]{40}$/.test(address)){
       alert("endereço de carteira inválido");
@@ -168,7 +150,7 @@ function WithdrawCancel(): ReactElement {
     let FeeTotal = feeAbsolut + feePercentTotal;
     setFeeTotal(FeeTotal);
     setTotalPay(total + FeeTotal);
-  }, [saleState]);
+  }, [totalPay, feeTotal ,saleState.total]);
 
   const ChangeCheckValue = (e: React.FormEvent<HTMLInputElement>) => {
     let value: number = 0.0;
@@ -203,160 +185,472 @@ function WithdrawCancel(): ReactElement {
 
   return (
     <Container>
-      <div className="container-app">
-        <div className="row">
-          <div className="col-lg-6 col-12 mb-3">      
-          <Title className="font-weight-bold mt-5">Compre Light via Pix.<br />
-Rápido. Prático. Sem burocracia.</Title>
+      <HeroContainer>
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6 col-12">
+              <Title>Bem simples, <br />bem rápido, <br />#Bembit.</Title>
+              <p>Aqui você consegue fazer as compras de seus <br /> tokens usando o meio de pagamento PIX.</p>
+              <Link className="a-primary">Compre agora</Link>
 
-            <p className="mt-3">
-              Agora, quem quiser comprar o token que investe em energia  renovável pode usar a ferramenta de transferência de dinheiro
-              mais popular do Brasil.
-            </p>
-
-            {/* <h2 className="mt-3">Consectetur imperdiet.</h2> */}
-
-            <p className="mt-3">
-            Para comprar a Light DeFi pelo Pix basta preencher o formulário ao lado, depositar o dinheiro e esperar seus criptoativos chegarem
-no endereço indicado. É muito rápido!
-            </p>
-
-            <p className="mt-3">
-            Não é uma maravilha? Lembrando que as vendas do Light DeFi continuam exclusivamente através da PancakeSwap, já que o Pix foi 
-lançado como uma alternativa para os usuários que enfrentam dificuldades em utilizar a plataforma em operações de compra.
-            </p>
-
-            <div className="alert alert-warning mt-3">
-              <ul className="m-0 ps-4 pe-4 pb-2 pt-2">
-                <li className="mb-3">O processo de compra via Pix não é oferecido pela Light. É um serviço prestado por terceiros.</li>
-                <li className="mb-3">Não nos responsabilizamos caso o usuário informe um número errado de carteira. Após a    confirmação do pagamento, é um processo irreversível
-   Por isso, confira os dados com bastante atenção.</li>
-                <li className="mb-3">Serão cobradas as taxas de R$ 5,00 + 2% - referente ao meio de pagamento.</li>
-                <li>Compra mínima de R$ 50,00 e serão descontados 10% de taxa de rede</li>
-              </ul>
-            </div>
-
-            <div className="row">
-              <p className="col-12 mt-5">
-              Baixe o aplicativo "Trust - Carteira de Criptomoedas e Bitcoin":
-              </p>
-
-              <div className="col-lg-3 col-6">
-                <a href="https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite" target="_blank"><img src={imgGoogleStore} className="img-fluid" /></a>                
-              </div>
-              
-              <div className="col-lg-3 col-6">
-                <a href="https://apps.apple.com/app/apple-store/id1288339409?pt=1324988&ct=website&mt=8" target="_blank"><img src={imgAppleStore} className="img-fluid" /></a>
+              <div className="numbers-info d-flex">
+                <div className="d-flex align-items-center">
+                  <span>100+</span>
+                  <p>Compras feitas</p>
+                </div>
+                <div className="d-flex align-items-center">
+                  <span>20+</span>
+                  <p>Tokens</p>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="col-lg-6 col-12">
+            <div className="col-lg-6 col-12">
             <Card>
-              <>
-                <Title className="font-weight-bold">Quer Comprar <span>Light DeFi?</span></Title>
-                <p>Preencha o formulário abaixo definindo o valor e seus dados para a compra do Token.</p>
+                <>
+                  <div className="title-card text-center">
+                    <h4>Compre token usando PIX</h4>
+                  </div>
+                  <div className="box-card">
+                    <InputGroup>
+                      <Input
+                        name="address"
+                        label={"Endereço de carteira (BSC)"}
+                        onChange={setValue}
+                        value={saleState.address}
+                        style={{ textAlign: "left" }}
+                      />
+                    </InputGroup>
 
-                <span className="text-danger mt-5 mb-5"><strong>ATENÇÃO:</strong> CASO NÃO SEJA INFORMADO O "NOME COMPLETO", A TRANSAÇÃO NÃO SERÁ COMPLETADA E O RECURSO SERÁ RETIDO.</span>
+                    <InputGroup>
+                      <Input
+                        name="quantity"
+                        label={"Quantidade em Token"}
+                        onChange={ChangeCheckValue}
+                        value={saleState.quantity}
+                      />
+                    </InputGroup>
 
-                <div>
-                  <InputGroup>
-                    <Input name="name" label={"Nome Completo"} onChange={setValue} />
-                  </InputGroup>
+                    <InputGroup>
+                      <Input
+                        name="total"
+                        label={"Valor em Real"}
+                        onChange={ChangeCheckValue}
+                        value={saleState.total}
+                      />
+                    </InputGroup>
 
-                  <InputGroup>
-                    <Input mask={"999.999.999-99"} name="document" type={"document"} label={"CPF"} onChange={setValue} />
-                  </InputGroup>
+                    <InputGroup>
+                      <Input
+                        name="fee"
+                        label={"Taxas"}
+                        disabled
+                        value={FormatToReal(feeTotal)}
+                        style={{ textAlign: "right" }}
+                      />
+                    </InputGroup>
 
-                  <InputGroup>
-                    <Input mask={"99/99/9999"} name="birth_date" type={"birth_date"} label={"Data de Nascimento"} onChange={setValue} />
-                  </InputGroup>
-
-                  <InputGroup>
-                    <Input
-                      name="phone"
-                      label={"Celular"}
-                      onChange={setValue}
-                      value={saleState.phone}
-                      style={{ textAlign: "right" }}
-                    />
-                  </InputGroup>
-
-                  <InputGroup>
-                    <Input name="email" label={"Email"} onChange={setValue} />
-                  </InputGroup>
-
-
-                  <InputGroup>
-                    <Input
-                      name="address"
-                      label={"Endereço de carteira (BSC)"}
-                      onChange={setValue}
-                      value={saleState.address}
-                      style={{ textAlign: "left" }}
-                    />
-                  </InputGroup>
-
-                  <Link 
-                    text={"Endereço de carteira da rede BSC (Binance Smart Chain - BEP20)"}
-                    target={"_blank"}
-                    link={"https://academy.binance.com/pt/articles/how-to-use-binance-chain-wallet"}
+                    <InputGroup>
+                      <Input
+                        name="total_pay"
+                        label={"Total a Pagar"}
+                        disabled
+                        value={FormatToReal(totalPay) + " (Total a Pagar)"}
+                        style={{ textAlign: "right" }}
+                      />
+                    </InputGroup>
+                    <Button
+                      text={"Compre agora"}
+                      onClick={() => handler()}
                       />
 
-                  <InputGroup>
-                    <Input
-                      name="total"
-                      label={"Valor em Real"}
-                      onChange={ChangeCheckValue}
-                      value={saleState.total}
-                      style={{ textAlign: "right" }}
-                    />
-                  </InputGroup>
+                  </div>
+                  </>
+              </Card>
 
-                  <InputGroup>
-                    <Input
-                      name="quantity"
-                      label={"Quantidade em Token"}
-                      onChange={ChangeCheckValue}
-                      value={saleState.quantity}
-                      style={{ textAlign: "right" }}
-                    />
-                  </InputGroup>
-
-                 
-
-                  <InputGroup>
-                    <Input
-                      name="fee"
-                      label={"Taxas"}
-                      disabled
-                      value={FormatToReal(feeTotal) + " (Taxas)"}
-                      style={{ textAlign: "right" }}
-                    />
-                  </InputGroup>
-
-                  <InputGroup>
-                    <Input
-                      name="total_pay"
-                      label={"Total a Pagar"}
-                      disabled
-                      value={FormatToReal(totalPay) + " (Total a Pagar)"}
-                      style={{ textAlign: "right" }}
-                    />
-                  </InputGroup>
-
-                </div>
-                <div className="text-end">
-                  <Button
-                    text={"Continuar"}
-                    onClick={() => handler()}
-                    />
-                </div>
-                </>
-            </Card>
+            </div>
           </div>
         </div>
-      </div>
+      </HeroContainer>
+
+      <HowToUseContainer className="container-app">
+        <div className="row">
+          <div className="col-lg-4">
+            <div className="box-to-use">
+              <h4>Selecione o token</h4>
+              <p>Ao selecionar o token, insira a quantidade de token para compra.</p>
+              <Link>Comprar agora</Link>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="box-to-use">
+              <h4>Selecione o token</h4>
+              <p>Ao selecionar o token, insira a quantidade de token para compra.</p>
+              <Link>Comprar agora</Link>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="box-to-use">
+              <h4>Selecione o token</h4>
+              <p>Ao selecionar o token, insira a quantidade de token para compra.</p>
+              <Link>Comprar agora</Link>
+            </div>
+          </div>
+        </div>
+      </HowToUseContainer>
+
+      <CapTokenCointainer>
+        <div className="container">
+          <div className="row text-white title-tokens align-items-center">
+            <div className="col-lg-6">
+              <h2>Os tokens mais <br />vendidos no mercado</h2>
+            </div>
+            <div className="col-lg-6">
+              <p>Escolha um dos melhores tokens para comprar<br /> usando Pix, assim você receberá muito mais rápido<br /> em sua carteira.</p>
+            </div>
+          </div>
+        </div>
+        <div className="token-list mt-4">
+          
+          <div className="token-track">
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+          </div>
+          <div className="token-track">
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+            <div className="token ">
+              <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center">
+                  <BsCurrencyBitcoin size={20} style={{ color: "#fff" }}/>
+                  <p>Bitcoin</p>
+                </div>
+                <span>BTC</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </CapTokenCointainer>
+
+      <SocialMediaContainer className="container-app">
+        <div className="row mb-4">
+          <h2>Veja nossas redes sociais</h2>
+        </div>
+        <div className="row">
+          <div className="col-lg-6">
+            <div className="col-lg-12">
+              <div className="box-social mb-4">
+                <p>Facebook</p>
+                <h3>Faça parte do nosso facebook</h3>
+                <Link>Ver mais</Link>
+              </div>
+            </div>
+            <div className="col-lg-12">
+              <div className="box-social">
+                <p>LinkedIn</p>
+                <h3>Siga nossas dicas no Instagram</h3>
+                <Link>Ver mais</Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="col-lg-12 h-100">
+              <div className="box-social h-100">
+                <p>Instagram</p>
+                <h3>Siga nossas dicas no Instagram</h3>
+                <Link>Conhecer nosso Instagram</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SocialMediaContainer>
+      <NewsletterContainer>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 box-newsletter text-white">
+              <p>Newsletter</p>
+              <h3>Assine o newsletter e <br />saiba tudo da Bembit.</h3>
+            </div>
+            <div className="col-lg-6">
+              <label htmlFor="newsletter" className="text-white">
+                Insira seu E-mail:
+              </label>
+              <div className="newsletter-group d-flex">
+                <input type="text" id="newsletter" placeholder="Ex: bembit@gmail.com"/>
+                <button><BsArrowRight size={30} style={{color: '#fff'}} /></button>
+              </div>
+            </div>   
+          </div> 
+        </div>
+      </NewsletterContainer>
+      <FaqContainer className="container-app">
+        <div className="row">
+          <div className="col-lg-6">
+            <p>FAQ</p>
+            <h2>Aqui você encontra as dúvidas frequentes dos clientes.</h2>
+          </div>
+          <div className="col-lg-6">
+            <Accordion />
+          </div>
+        </div>
+      </FaqContainer>
     </Container>
   );
 }

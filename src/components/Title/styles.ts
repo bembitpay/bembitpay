@@ -26,11 +26,8 @@ export const TitleContainer = styled.div`
   line-height: 53px;
   color: #ffffff;
   text-align: center;
-  @media (max-width: 768px) {
-    font-size: 40px;
-  }
   ${device.mobileSmall} {
-    font-size: 30px;
+    font-size: 20px;
   }
 `;
 

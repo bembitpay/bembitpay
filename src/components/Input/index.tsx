@@ -19,9 +19,11 @@ function InputComponent({
 }: InputProps): ReactElement {
   return (
       <Content>
+        
         {mask && mask != "" ? (
           <InputMask 
-            className="form-control"
+            className={"form__input " + (value.length > 0 ? "has-letter" : "")}
+            placeholder=""
             style={style}
             autoComplete="off"
             name={name}
@@ -42,16 +44,15 @@ function InputComponent({
                 onBlur(el);
               }
             }}
-            placeholder={label}
             mask={mask}
           />
         ) : (
           <Input
-            className="form-control"
+            className={"form__input " + (value.length > 0 ? "has-letter" : "") }
+            placeholder=""
             style={style}
             autoComplete="off"
             name={name}
-            placeholder={label}
             onChange={(el: any) => {
               if (onChange) {
                 onChange(el);
@@ -71,6 +72,7 @@ function InputComponent({
             }}
           />
         )}
+        <Label>{label}</Label>
       </Content>
   );
 }

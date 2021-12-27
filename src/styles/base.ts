@@ -3,7 +3,6 @@ import { device } from "./device";
 
 export const ContainerBase = styled.div`
   flex: 1;
-  padding: 50px 0;
 `;
 
 export const TitleContainerBase = styled.div`

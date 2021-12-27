@@ -24,6 +24,7 @@ import DepositPixDone from "../pages/DepositPixDone";
 import DepositCancel from "../pages/DepositCancel";
 
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { LoadingAnimation } from "../components/Animation";
 import { Container, HeaderContainer, LoadingContainer } from "./styles";
 
@@ -73,7 +74,7 @@ export default function Routes() {
   return (
     <Router history={history}>
       <HeaderContainer>
-        <Header />
+        <Header/>
       </HeaderContainer>
 
       <Container>
@@ -130,6 +131,10 @@ export default function Routes() {
           <Route path="/deposit/info/cancel" exact component={DepositCancel} />
         </AnimatedSwitch>
       </Container>
+
+      <HeaderContainer>
+        <Footer />
+      </HeaderContainer>
     </Router>
   );
 }

@@ -7,25 +7,22 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
+  display: flex;
   justify-content: center;
-  padding: 15px 50px;
-  background: ${(props) => props.theme.color.orange};
-  border-radius: 3px;
-  color: #FFFFFF;
+  width: 100%;
+  padding: 15px 30px !important;
+  background: ${(props) => props.theme.color.secondary};
+  border-radius: 6px;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
-  &:hover {
-    background: ${(props) => props.theme.color.orange2};
-    color: #FFFFFF;
+  
+  span {
+    margin: 0 auto;
+    color: ${(props) => props.theme.color.text_white};
+    font-weight: 600;
   }
-
-  &.default {
-    background: ${(props) => props.theme.color.gray2} !important;
-    
-    &:hover {
-      background: ${(props) => props.theme.color.gray3} !important;
-    }
-  }
+  
+  
 `;

@@ -5,4 +5,5 @@ export interface CardProps {
   subtitle?: string;
   titleElement?: JSX.Element;
   children: JSX.Element;
+  style?: CSSProperties;
 }

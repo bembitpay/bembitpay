@@ -1,16 +1,11 @@
 export default {
     color: {
-      blue:"#232140",
-      blue1:"#1A1736",
+      primary: "#273176",
+      secondary: "#F02C5E",
 
-      orange: "#CF9E1C",
-      orange2: "#E7AA09",
+      text_black: "#222",
+      text_white: "#FFF"
 
-      gray: "#3a3635",
-      gray2: "#A3A3A3",
-      gray3: "#C1C1C1",
-      gray4: "#6F6F6F",
-      gray5: "#505050"
     },
     font: {
       extralarger: 22,

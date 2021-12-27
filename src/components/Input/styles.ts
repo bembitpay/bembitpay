@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 import { device, size } from "../../styles/device";
 
-import CpfCnpj from "@react-br-forms/cpf-cnpj-mask";
-
 export const Container = styled.div`
   width: 100%;
 `;
@@ -13,37 +11,53 @@ export const Content = styled.div`
   margin: 20px 0 20px 0;
   border-radius: 12px;
   width: 100%;
-  &.number {
-    input {
-      text-align: right;
+  height: 50px;  
+
+  .form__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    border: 1px solid #b3b3b3;
+    border-radius: 6px;
+    outline: none;
+    padding: 1rem;
+    background: none;
+    z-index: 1;
+
+    &:not([disabled]):focus ~ label {
+      top: -.5rem;
+      left: .8rem;
+      color: #222;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 10;
     }
-  }
-  .document {
-    border: none;
-    background-color: #1a1736;
-    border-radius: 12px;
-    padding: 15px 10px;
-    &:focus {
-      padding: 15px 10px;
+
+    &:not([disabled]).has-letter ~ label {
+      top: -.5rem;
+      left: .8rem;
+      color: #222;
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 10;
     }
-    color: #ffffff;
-    width: auto;
   }
 `;
 
-export const Label = styled.div`
- 
+export const Label = styled.label`
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0 .25rem;
+  background: #fff;
+  color: rgba(34, 34, 34, 0.5);
+  font-size: 14px;
+  transition: .2s;
+
+  pointer-events: none;
 `;
 
-export const Input = styled.input`
-  font-family: 'Open Sans', sans-serif !important;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
-  color: #505050;
-  text-align: left !important;
-  background: #FFFFFF;
-  border: 1px solid #ADADAD;
-  border-radius: 3px;
-`;
+export const Input = styled.input``;

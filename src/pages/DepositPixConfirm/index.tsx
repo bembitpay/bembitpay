@@ -8,6 +8,8 @@ import QRCode from "react-qr-code";
 import {} from "react-router-dom";
 import Animation from "../../assets/json/1870-check-mark-done.json";
 
+import { BsPhone } from "react-icons/bs";
+
 import { Create, Detail, Check } from "../../store/modules/deposit/actions";
 import { Card, TextInfo } from "../../components";
 import {
@@ -21,7 +23,10 @@ import {
   ItemValue,
   QrcodeText,
   Row,
+  BoxDepositPix,
   AnimationContainer,
+  BoxQrCode,
+  BoxInfoPay,
   ColumnQrCode,
 } from "./styles";
 
@@ -73,69 +78,66 @@ function DepositPixConfirm(): ReactElement {
   };
 
   return (
-    <div className="container pt-5">
-      <Card
-        title={"Pagamento Pix"}
-        subtitle={"Agora você pode entrar no seu banco e ler esse qrcode."}
-        >
-        <>
-          <div className="row mt-5">
-            <div className="col-lg-8 col-12">
-              <div className="row mt-5 mb-5">
-                <div className="col-12">
-                  <TextInfo
-                    label={"Chave Pix"}
-                    text={deposit.payment_url}
-                    />
-
-                  <TextInfo
-                    label={"Valor para depositar"}
-                    text={FormatToReal(deposit?.total)}
-                    />
-
-                  <TextInfo
-                    label={"Taxa total"}
-                    text={FormatToReal(deposit?.fee)}
-                    />
-
-                  <TextInfo
-                    label={"Valor da operação"}
-                    text={FormatToReal(deposit?.amount_receivable)}
-                    />
+    <div className="container py-5">
+      <div className="row">
+        <BoxDepositPix className="col-lg-12 align-items-center ">
+          <h3 className="text-center mb-4">Pagamento via PIX</h3>
+          <Card style={{padding: 30, margin: '0 auto', maxWidth: 600}}>
+            <>
+              {paid ? (
+                <AnimationContainer>
+                  <Lottie
+                    options={{
+                      animationData: Animation,
+                      loop: false,
+                    }}
+                    height={129}
+                  />
+                </AnimationContainer>
+              ) : (
+                <CounterContainer>
+                  <div className="alert alert-warning"> AGUARDANDO SEU DEPÓSITO</div>
+                </CounterContainer>
+              )}
+              <BoxQrCode className="row align-items-center">
+                <div className="col-lg-6">
+                  <ColumnQrCode>
+                    <QRCode value={deposit.payment_url} size={220} />
+                  </ColumnQrCode>
                 </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-12 text-center">
-              <ColumnQrCode>
-                <QRCode value={deposit.payment_url} size={220} />
-                <span className="d-block mt-2">
-                  Você pode ler esse qrcode na sua conta bancária
-                </span>
-              </ColumnQrCode>
-            </div>
-          </div>
-
-          <Row>
-          {paid ? (
-            <AnimationContainer>
-              <Lottie
-                options={{
-                  animationData: Animation,
-                  loop: false,
-                }}
-                height={129}
-              />
-            </AnimationContainer>
-          ) : (
-            <CounterContainer>
-              <div className="alert alert-warning"> AGUARDANDO SEU DEPÓSITO</div>
-            </CounterContainer>
-          )}
-        </Row>
-        </>
-      </Card>
+                <div className="col-lg-6 text-center deposit-price">
+                  <span>Valor para depositar</span>
+                  <p>R$ 100,00</p>
+                  <Button className="a-primary" text={"Copiar Código"}/>
+                </div>
+                <div className="col-lg-12">
+                  <div className="info-qrcode d-flex align-items-center">
+                    <BsPhone size={30}/>
+                    <p>Leia o QR Code ou use o Código PIX para efetuar o depósito e finalizar a compra.</p>
+                  </div>
+                </div>
+              </BoxQrCode>
+              <hr className="my-4 my-lg-5"/>
+              <BoxInfoPay className="row">
+                <div className="col-lg-12">
+                  <span className="mb-4">Chave PIX</span>
+                  <p className="pix-key">00020126580014br.gov.bcb.pix013636b1bf42-ad16-4500-b6a2-2a5adaef34a55204000053039865406253.495802BR5906C01NBR6013Florianopolis61088803628062240520LIGHT55c37f1750001b26304DA32</p>
+                </div>
+                <div className="col-lg-12 d-flex justify-content-between">
+                  <span>Taxa total:</span>
+                  <p>R$ 9,00</p>
+                </div>
+                <div className="col-lg-12 d-flex justify-content-between">
+                  <span>Valor da operação:</span>
+                  <p>R$ 91,00</p>
+                </div>
+              </BoxInfoPay>
+            </>
+          </Card>
+        </BoxDepositPix>
+      </div>
     </div>
+    
     
   );
 }

@@ -6,7 +6,15 @@ import {
   ContainerBase,
 } from "../../styles/base";
 
-export const Container = styled(ContainerBase)``;
+export const Container = styled(ContainerBase)`
+  .box-datas {
+    padding: 10px 25px;
+
+    ${device.mobileSmall} {
+      padding: 2px 15px 20px 15px !important;
+    }
+  }
+`;
 
 export const TitleContainer = styled(TitleContainerBase)``;
 
@@ -153,5 +161,83 @@ export const ButtonBack = styled.a`
   &:hover {
     cursor: pointer;
     text-decoration: underline;
+  }
+`;
+
+export const DatasContainer = styled.div`
+  background: #F8F8F8;
+  padding: 30px 60px;
+
+  .content-datas {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  ${device.mobileSmall} {
+
+    padding: 40px 20px;
+  }
+`;
+
+export const InfoContainer = styled.div`
+  max-width: 800px;
+  padding: 30px 0;
+
+  ${device.mobileSmall} {
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
+
+  .info-token {
+    hr {
+      opacity: 0.2;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  .info-wallet {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    span {
+      font-size: 16px;
+      opacity: 0.7;
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 20px;
+      margin-top: 10px;
+      word-break: break-all;
+    }
+    
+  }
+
+  .value-pay {
+    span {
+      font-weight: 400;
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    .total {
+      p {
+        font-size: 24px;
+      }
+    }
   }
 `;

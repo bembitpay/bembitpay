@@ -9,7 +9,7 @@ export const size = {
 };
 
 export const device = {
-  mobileSmall: ` @media screen and (max-width: ${size.mobileM}) and (min-width: ${size.mobileS})`,
+  mobileSmall: ` @media screen and (max-width: ${size.mobileL}) and (min-width: ${size.mobileS})`,
   mobileMedium: ` @media screen and (max-width: ${size.tablet}) and (min-width: ${size.mobileM})`,
   Tablet: ` @media screen and (max-width: ${size.laptop}) and (min-width: ${size.tablet})`,
   Desktop: ` @media screen and (max-width: ${size.desktop}) and (min-width: ${size.laptop})`,

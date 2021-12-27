@@ -29,6 +29,14 @@ export const Row = styled.div`
   }
 `;
 
+export const BoxDepositPix = styled.div`
+  &>div {
+    ${device.mobileSmall} {
+      padding: 10px !important;
+    }
+  }
+`;
+
 export const ColumnFields = styled.div`
   flex: 1;
   justify-content: space-between;
@@ -40,11 +48,15 @@ export const ColumnFields = styled.div`
 `;
 
 export const ColumnQrCode = styled.div`
-  flex: 1;
-  padding: 10px;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 18px;
   align-items: center;
-  @media (max-width: ${size.tablet}) {
-    height: 300px;
+  border: 1px solid #D2D2D2;
+  border-radius: 12px;
+
+  ${device.mobileSmall} {
+    border: none;
   }
 `;
 
@@ -96,18 +108,18 @@ export const CounterContainer = styled.div`
   justify-content: center;
   align-items: center;
   & .counter {
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-style: normal;
-    font-weight: normal;
+    font-weight: 700;
     font-size: 34px;
     line-height: 41px;
     color: #ffe1e1;
     margin: 20px 0 20px 0;
   }
   & .title {
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-style: normal;
-    font-weight: normal;
+    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     color: #ffe1e1;
@@ -115,3 +127,70 @@ export const CounterContainer = styled.div`
 `;
 
 export const AnimationContainer = styled.div``;
+
+export const BoxQrCode = styled.div`
+  .info-qrcode {
+    background: #F2F2F2;
+    border: 1px solid #D2D2D2;
+
+    padding: 13px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+
+    p {
+      margin-left: 10px;
+
+      ${device.mobileSmall} {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .deposit-price {
+    span {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    p {
+      font-size: 30px;
+      font-weight: 700;
+    }
+  }
+
+  button {
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  
+`;
+
+export const BoxInfoPay = styled.div`
+  div {
+    margin-bottom: 20px;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: 500;
+    opacity: 0.8;
+
+    ${device.mobileSmall} {
+      font-size: 14px;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 700;
+
+    ${device.mobileSmall} {
+      font-size: 16px;
+    }
+  }
+
+  .pix-key {
+    word-break: break-all;
+  }
+`;

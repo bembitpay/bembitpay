@@ -1,12 +1,38 @@
 import React, { useEffect, ReactElement } from "react";
 
-import { HeaderContainer, LogoImage } from "./styles";
-import Logo from "../../assets/images/logo-white.svg";
+import { HeaderContainer, Link } from "./styles";
+import Logo from "../../assets/images/logo_bembit.svg";
 
 function Header(): ReactElement {
+  const URL_current = window.location.href;
+
   return (
-    <HeaderContainer href="https://Lightdefi.org">
-      <LogoImage src={Logo} />
+    <HeaderContainer className={(URL_current != "/" ? 'not-fixed' : '')}>
+      <div className="d-flex align-items-center">
+        <img src={Logo} />
+
+        {URL_current == "/" && (
+          <ul>
+            <li>Home</li>
+            <li>Referral</li>
+            <li>Como funciona</li>
+            <li>Blog</li>
+          </ul>
+        )}
+      </div>
+
+      {URL_current != "/" ? (
+          <div className="group-button d-flex align-items-center">
+            <Link>Contato</Link>
+          </div>
+        ) : (
+          <div className="group-button d-flex align-items-center">
+            <Link className="a-primary">Como funciona</Link>
+            <Link>Compre agora</Link>
+          </div>
+        )}
+
+
     </HeaderContainer>
   );
 }
