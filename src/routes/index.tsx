@@ -78,11 +78,11 @@ export default function Routes() {
       </HeaderContainer>
 
       <Container>
-        {loading && (
+        {/* {loading && (
           <LoadingContainer className="loading">
             <LoadingAnimation width={100} height={100} />
           </LoadingContainer>
-        )}
+        )} */}
         <AnimatedSwitch
           atEnter={bounceTransition.atEnter}
           atLeave={bounceTransition.atLeave}
