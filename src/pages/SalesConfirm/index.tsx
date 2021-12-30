@@ -90,7 +90,7 @@ function SalesConfirm(): ReactElement {
   };
 
   const handlerDatas = () => {
-    const { name, document, birth_date, email, phone, quantity } = sale;
+    const {  name, document, birth_date, email, phone, quantity } = sale;
     dispatch(
       RegisterSale({ 
         name, 
@@ -130,19 +130,19 @@ function SalesConfirm(): ReactElement {
       return;
     } 
 
-    // dispatch(
-    //   Create({
-    //     quantity,
-    //     name,
-    //     document,
-    //     birth_date,
-    //     email,
-    //     phone,
-    //     fee: fee,
-    //     total_pay: total_pay,
-    //     address: sale.address,
-    //   })
-    // );
+    dispatch(
+      Create({
+        quantity,
+        name,
+        document,
+        birth_date,
+        email,
+        phone,
+        fee: fee,
+        total_pay: total_pay,
+        address: sale.address,
+      })
+    );
 
     setShowConfirm(!showConfirm);
   };
@@ -281,6 +281,7 @@ function SalesConfirm(): ReactElement {
                 </div>
               </div>
             </div>
+            <Button text={"Finalizar compra"} onClick={() => handler()} />
           </div>
         </InfoContainer>
 

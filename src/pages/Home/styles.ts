@@ -6,6 +6,9 @@ import {
   ContainerBase,
 } from "../../styles/base";
 
+import patternHero from "../../assets/images/pattern-hero.png";
+import imgHowToUse from "../../assets/images/img-how-to-use.svg";
+
 export const Container = styled(ContainerBase)``;
 
 export const TitleContainer = styled(TitleContainerBase)``
@@ -116,12 +119,18 @@ export const ContainerButton = styled.div`
 `;
 
 export const HeroContainer = styled.section`
+  position: relative;
   background: #fafafa;
   padding-top: 120px;
   padding-bottom: 140px;
+  overflow-x: hidden;
 
   ${device.mobileSmall} {
-    padding-top: 50px;
+    padding-top: 100px;
+  }
+
+  .box-card {
+    z-index: 1;
   }
 
   .numbers-info {
@@ -150,12 +159,48 @@ export const HeroContainer = styled.section`
       margin-top: 20px;
     }
   }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    background-image: url(${patternHero});
+    background-size: 500px auto;
+    background-repeat: no-repeat;
+    z-index: 0;
+
+    ${device.mobileSmall} {
+      display: none;
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -200px;
+    width: 100%;
+    height: 100%;
+    background-image: url(${patternHero});
+    background-size: 500px auto;
+    background-repeat: no-repeat;
+
+    ${device.mobileSmall} {
+      display: none;
+    }
+  }
+
+  
 `;
 
 export const HowToUseContainer = styled.section`
   position: relative;
   top: -70px;
   .box-to-use {
+    position: relative;
     background: #fff;
 
     border: 1px solid #C8C8C8;
@@ -163,12 +208,36 @@ export const HowToUseContainer = styled.section`
 
     padding: 30px;
 
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background-image: url(${imgHowToUse});
+      background-size: 100% 100%;
+
+      ${device.mobileSmall} {
+        width: 100px;
+        height: 100px;
+        /* display: none; */
+      }
+      
+    }
+
     p {
+      width: 60%;
       margin-bottom: 60px;
+
+      ${device.mobileSmall} {
+        width: 100%;
+      }
     }
 
     ${device.mobileSmall} {
       margin-bottom: 20px;
+      padding: 20px;
     }
   }
 `;
@@ -203,6 +272,7 @@ export const CapTokenCointainer = styled.section`
     position: relative;
     margin: auto;
 
+
     &::before {
       content: "";
       position: absolute;
@@ -225,10 +295,25 @@ export const CapTokenCointainer = styled.section`
       z-index: 99;
     }
 
+    ${device.mobileSmall} {
+      &::before {
+        width: 50px;
+      }
+
+      &::after {
+        width: 50px;
+      }
+    }
+
+    .token-track.secondary {
+      animation-direction: reverse !important;
+    }
+
     .token-track {
       display: flex;
       width: calc(180px * 14);
-      animation: ${Marquee} 10s infinite linear;
+      animation: ${Marquee} 15s infinite linear;
+      margin-bottom: 10px;
 
       &:hover {
         animation-play-state: paused;
@@ -277,6 +362,8 @@ export const SocialMediaContainer = styled.section`
   }
 
   .box-social {
+    overflow: hidden;
+    position: relative;
     background: #fff;
   
     border: 1px solid #C8C8C8;
@@ -294,11 +381,27 @@ export const SocialMediaContainer = styled.section`
     }
 
 
+    h3 {
+      max-width: 60%; 
+      ${device.mobileSmall} {
+        max-width: 70%;
+      }
+    }
+
+
     &.big {
       height: 100%;
 
       ${device.mobileSmall} {
         height: 400px;
+
+        img {
+          bottom: -10% !important;
+        }
+      }
+
+      img {
+        bottom: -5% !important;
       }
     }
 
@@ -306,6 +409,17 @@ export const SocialMediaContainer = styled.section`
       transform: translateY(-10px);
       filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.05));
       border: 1px solid #EBEBEB;
+    }
+
+    img {
+      position: absolute;
+      bottom: -10%;
+      right: 0;
+
+      ${device.mobileSmall} {
+        right: -50px;
+        width: 200px;
+      }
     }
   }
 `;
@@ -346,6 +460,9 @@ export const NewsletterContainer = styled.section`
       font-size: 18px;
       font-weight: 600;
       padding: 16px;
+      ${device.mobileSmall} {
+        width: 80%;
+      }
     }
 
     button {
@@ -354,6 +471,10 @@ export const NewsletterContainer = styled.section`
       height: 100%;
       border: none;
       border-radius: 0 6px 6px 0; 
+
+      ${device.mobileSmall} {
+        width: 20%;
+      }
     }
   }
 

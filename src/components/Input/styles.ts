@@ -54,7 +54,7 @@ export const Label = styled.label`
   padding: 0 .25rem;
   background: #fff;
   color: rgba(34, 34, 34, 0.5);
-  font-size: 14px;
+  font-size: 16px;
   transition: .2s;
 
   pointer-events: none;

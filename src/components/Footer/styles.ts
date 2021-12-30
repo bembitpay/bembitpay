@@ -11,9 +11,22 @@ export const FooterContainer = styled.footer`
         font-weight: 600;
     }
 
+    p.title-links {
+        ${device.mobileSmall} {
+            margin-top: 30px;
+        }
+    }
+
+    ${device.mobileSmall} {
+        hr {
+            margin-top: 100px;
+        }
+    }
+
     
     .footer-1 {
         margin-bottom: 20px;
+    
 
         .newsletter {
             height: 45px;
@@ -21,11 +34,12 @@ export const FooterContainer = styled.footer`
             p {
                 font-weight:400;
                 font-size: 14px;
+
             }
         
             input {
                 width: 100%;
-                height: 100%;
+                height: 45px;
                 border: 1px solid #D2D2D2;
                 border-radius: 6px 0 0 6px;
                 color: ${(props) => props.theme.color.text_black};
@@ -43,12 +57,33 @@ export const FooterContainer = styled.footer`
                 padding: 0 15px;
                 border: none;
                 border-radius: 0 6px 6px 0; 
+
+                ${device.mobileSmall} {
+                    width: 20%;
+                    height: 45px;
+                }
             }
         }
     }
 
     .footer-2 {
         margin-top: 20px;
+
+        ${device.mobileSmall} {
+            margin-top: 50px;
+
+            
+        }
+
+        &>div {
+            ${device.mobileSmall} {
+                flex-direction: column;
+
+                img, a  {
+                    margin-bottom: 20px;
+                }
+            }
+        }
 
         img {
             width: 120px;
@@ -67,6 +102,33 @@ export const FooterContainer = styled.footer`
         a:hover {
             opacity: 1;
         }
+
+        .socials {
+            ul {
+                list-style-type: none !important;
+                margin-bottom: 0px;
+
+                ${device.mobileSmall} {
+                    padding-left: 0 !important;
+                }
+
+                a {
+                    margin-left: 10px;
+                    margin-right: 0;
+                    padding: 14px;
+                    border-radius: 30px;
+                    
+                    &:hover {
+                        background: rgba(240, 44, 94, 0.1);
+
+                        svg {
+                            fill: #F02C5E;
+                        }
+
+                    }
+                }
+            }
+        }
     }
 
     .footer-3 {
@@ -74,6 +136,9 @@ export const FooterContainer = styled.footer`
 
         p {
             font-weight: 400;
+            ${device.mobileSmall} {
+                font-size:  12px;
+            }
         }
 
         span {
@@ -92,7 +157,7 @@ export const LinksContent = styled.div`
             font-size: 12px;
             font-weight: 500;
             text-decoration: none;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             opacity: 0.5;
 
             &:hover {

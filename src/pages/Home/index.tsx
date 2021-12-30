@@ -47,8 +47,10 @@ import {
 
 import { GeneralState } from "../../store/modules/general/types";
 import Input from "../../components/Input";
-import imgGoogleStore from "../../assets/images/googlePlay.png";
-import imgAppleStore from "../../assets/images/appStore.png";
+
+import imgFacebook from "../../assets/images/social/img-facebook.svg";
+import imgLinkedin from "../../assets/images/social/img-linkedin.svg";
+import imgInstagram from "../../assets/images/social/img-instagram.svg";
 
 function WithdrawCancel(): ReactElement {
   const [saleState, setSale] = useState({
@@ -204,7 +206,7 @@ function WithdrawCancel(): ReactElement {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-12">
+            <div className="col-lg-6 col-12 box-card">
             <Card>
                 <>
                   <div className="title-card text-center">
@@ -311,7 +313,7 @@ function WithdrawCancel(): ReactElement {
         </div>
         <div className="token-list mt-4">
           
-          <div className="token-track">
+          <div className="token-track secondary">
             <div className="token ">
               <div className="d-flex align-items-center">
                 <div className="d-flex align-items-center">
@@ -600,6 +602,7 @@ function WithdrawCancel(): ReactElement {
                 <p>Facebook</p>
                 <h3>Faça parte do nosso facebook</h3>
                 <Link>Ver mais</Link>
+                <img src={imgFacebook} alt="" />
               </div>
             </div>
             <div className="col-lg-12">
@@ -607,15 +610,17 @@ function WithdrawCancel(): ReactElement {
                 <p>LinkedIn</p>
                 <h3>Siga nossas dicas no Instagram</h3>
                 <Link>Ver mais</Link>
+                <img src={imgLinkedin} alt="" />
               </div>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="col-lg-12 h-100">
-              <div className="box-social h-100">
+              <div className="box-social big h-100">
                 <p>Instagram</p>
                 <h3>Siga nossas dicas no Instagram</h3>
-                <Link>Conhecer nosso Instagram</Link>
+                <Link>Ver mais</Link>
+                <img src={imgInstagram} alt="" />
               </div>
             </div>
           </div>
