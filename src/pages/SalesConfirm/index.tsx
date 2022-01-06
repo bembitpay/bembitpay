@@ -90,24 +90,8 @@ function SalesConfirm(): ReactElement {
   };
 
   const handlerDatas = () => {
-    const {  name, document, birth_date, email, phone, quantity } = sale;
-    dispatch(
-      RegisterSale({ 
-        name, 
-        document, 
-        birth_date, 
-        email, 
-        phone, 
-        quantity, 
-        address: sale.address 
-      })
-    );
-  }
+    const {  name, document, birth_date, email, phone } = datasState;
 
-  const handler = () => {
-    const { quantity, fee, total_pay } = sale;
-    const { name, document, birth_date, email, phone } = datasState;
-    
     if (name === "") {
       alert("name é obrigatório");
       return;
@@ -120,6 +104,7 @@ function SalesConfirm(): ReactElement {
       alert("phone é obrigatório");
       return;
     }
+
     if (document == "" || !ValidateCpf(document)) {
       alert("Informe um CPF válido");
       return;
@@ -129,22 +114,26 @@ function SalesConfirm(): ReactElement {
       alert("Informe uma data de nascimento válida");
       return;
     } 
+    
+    setShowConfirm(!showConfirm);
+  }
+
+  const handler = () => {
+    const { quantity } = sale;
+    const { name, document, birth_date, email, phone } = datasState;
 
     dispatch(
-      Create({
-        quantity,
-        name,
-        document,
-        birth_date,
-        email,
-        phone,
-        fee: fee,
-        total_pay: total_pay,
-        address: sale.address,
+      RegisterSale({ 
+        name, 
+        document, 
+        birth_date, 
+        email, 
+        phone, 
+        quantity, 
+        address: sale.address 
       })
     );
 
-    setShowConfirm(!showConfirm);
   };
 
   return (
@@ -160,31 +149,31 @@ function SalesConfirm(): ReactElement {
               <>
                 <TextInfo
                   label={"Nome Completo"}
-                  text={sale?.name}
+                  text={datasState?.name}
                   />
 
                 <TextInfo
                   label={"CPF"}
-                  text={sale?.document}
+                  text={datasState?.document}
                   />
 
                 <TextInfo
                   label={"Data de Nascimento"}
-                  text={sale?.birth_date}
+                  text={datasState?.birth_date}
                   />
 
                 <TextInfo
                   label={"Email"}
-                  text={sale?.email}
+                  text={datasState?.email}
                   />
 
                 <TextInfo
                   label={"Celular"}
-                  text={sale?.phone}
+                  text={datasState?.phone}
                   />
-                <Button text={"Finalizar compra"} onClick={() => handlerDatas()} />
+                <Button text={"Finalizar compra"} onClick={() => handler()} />
               </>
-            ) : (
+              ) : (
               <Card>
                 <>
                   <div className="box-datas">
@@ -240,6 +229,7 @@ function SalesConfirm(): ReactElement {
                 </>
               </Card>
             )}
+            
           </div>
         </DatasContainer>
         <InfoContainer className="col-lg-7">
@@ -262,7 +252,7 @@ function SalesConfirm(): ReactElement {
                   <p>Bitcoin</p>
                 </div>
                 <div className="col-lg-6">
-                  <p>0.0100 BTC</p>
+                  <p>{sale.quantity} BTC</p>
                 </div>
               </div>
               <hr />
@@ -273,15 +263,14 @@ function SalesConfirm(): ReactElement {
               <div className="value-pay">
                 <div className="d-flex justify-content-between">
                   <span>Taxas:</span>
-                  <p>R$ 100,00</p>
+                  <p>{FormatToReal(sale?.fee)}</p>
                 </div>
                 <div className="d-flex total  justify-content-between">
                   <span>Total a pagar:</span>
-                  <p>R$ 100,00</p>
+                  <p>{FormatToReal(sale?.total_pay)}</p>
                 </div>
               </div>
             </div>
-            <Button text={"Finalizar compra"} onClick={() => handler()} />
           </div>
         </InfoContainer>
 

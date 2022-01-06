@@ -17,7 +17,17 @@ export const Button = styled.button`
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
-  
+  transition: opacity 0.2s linear;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+    
+
   span {
     margin: 0 auto;
     color: ${(props) => props.theme.color.text_white};

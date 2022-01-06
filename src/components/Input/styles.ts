@@ -45,6 +45,7 @@ export const Content = styled.div`
       z-index: 10;
     }
   }
+
 `;
 
 export const Label = styled.label`
@@ -60,4 +61,26 @@ export const Label = styled.label`
   pointer-events: none;
 `;
 
-export const Input = styled.input``;
+export const Input = styled.input`
+  &[disabled] {
+    height: auto !important;
+    padding: 0 !important;
+    border: none;
+    background: none !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    
+    &:disabled {
+      color: ${(props) => props.theme.color.text} !important;
+    }
+  }
+
+  &[disabled] + label {
+    padding: 0 !important;
+    left: 0;
+    top: 0;
+    color: rgba(34, 34, 34, 0.6);
+  }
+
+
+`;

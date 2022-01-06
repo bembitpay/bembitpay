@@ -10,4 +10,5 @@ export interface InputProps {
   style?: CSSProperties;
   type?: string;
   mask?: string;
+  readonly?: string;
 }

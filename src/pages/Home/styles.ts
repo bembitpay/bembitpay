@@ -129,8 +129,35 @@ export const HeroContainer = styled.section`
     padding-top: 100px;
   }
 
-  .box-card {
+  .box-card-hero {
     z-index: 1;
+
+    p {
+      font-size: 14px;
+      margin-top: -10px;
+      font-weight: 600;
+    }
+
+    .box-card {
+      .token-option {
+        div {
+          margin: 0 !important;
+
+          input[name="quantity"] {
+            border-radius: 0 6px 6px 0 !important;
+          }
+          
+        }
+      }
+
+      .form-group:nth-last-child(-n+3) {
+        height: 20px !important;
+      }
+
+      button {
+        margin-top: 30px;
+      }
+    }
   }
 
   .numbers-info {

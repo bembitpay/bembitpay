@@ -9,7 +9,7 @@ import Logo from "../../assets/images/logo_bembit.svg";
 function Footer(): ReactElement {
   return (
       <FooterContainer >
-        <div className="container-app">
+        <div className="container">
             <div className="row footer-1">
                 <div className="col-lg-8">
                     <div className="row">

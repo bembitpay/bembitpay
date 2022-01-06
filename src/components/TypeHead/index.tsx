@@ -2,7 +2,8 @@ import React, { ReactElement, useState, useEffect } from "react";
 import "react-multi-carousel/lib/styles.css";
 import { TypeHeadProps } from "./props";
 
-import { Input } from "../";
+import Input from "../Input";
+
 import {
   Container,
   Content,
@@ -79,7 +80,8 @@ function TypeHeadComponent({
               <OptionItem onClick={() => SelectItem(item.code, item.name)}>
                 {item.code} - {item.name}
               </OptionItem>
-            ))}
+            )
+          )}
       </OptionContainer>
     </Container>
   );

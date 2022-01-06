@@ -156,6 +156,10 @@ export default createGlobalStyle`
     border-radius: 3px;
   }
 
+  .form-group {
+    width: 100%;
+  }
+
   .loading {
     position: fixed;
   }

@@ -16,6 +16,7 @@ function InputComponent({
   onBlur,
   style,
   type,
+  readonly,
 }: InputProps): ReactElement {
   return (
       <Content>
@@ -24,6 +25,7 @@ function InputComponent({
           <InputMask 
             className={"form__input " + (value.length > 0 ? "has-letter" : "")}
             placeholder=""
+            readonly={readonly}
             style={style}
             autoComplete="off"
             name={name}
@@ -50,6 +52,7 @@ function InputComponent({
           <Input
             className={"form__input " + (value.length > 0 ? "has-letter" : "") }
             placeholder=""
+            readonly={readonly}
             style={style}
             autoComplete="off"
             name={name}

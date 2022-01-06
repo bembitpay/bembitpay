@@ -10,6 +10,7 @@ import {} from "react-router-dom";
 import { Create } from "../../store/modules/sale/actions";
 import { Receipt, ReceiptWithdraw, Button, InputGroup, Card } from "../../components";
 import Accordion from "../../components/Accordion";
+import OptionToken from "../../components/OptionToken";
 
 import { BsArrowRight, BsCurrencyBitcoin} from "react-icons/bs";
 
@@ -53,6 +54,7 @@ import imgLinkedin from "../../assets/images/social/img-linkedin.svg";
 import imgInstagram from "../../assets/images/social/img-instagram.svg";
 
 function WithdrawCancel(): ReactElement {
+  const [selected, setSelected] = useState("Bitcoin");
   const [saleState, setSale] = useState({
     name: "",
     email: "",
@@ -152,7 +154,7 @@ function WithdrawCancel(): ReactElement {
     let FeeTotal = feeAbsolut + feePercentTotal;
     setFeeTotal(FeeTotal);
     setTotalPay(total + FeeTotal);
-  }, [totalPay, feeTotal ,saleState.total]);
+  }, [saleState]);
 
   const ChangeCheckValue = (e: React.FormEvent<HTMLInputElement>) => {
     let value: number = 0.0;
@@ -206,7 +208,7 @@ function WithdrawCancel(): ReactElement {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-12 box-card">
+            <div className="col-lg-6 col-12 box-card-hero">
             <Card>
                 <>
                   <div className="title-card text-center">
@@ -223,14 +225,16 @@ function WithdrawCancel(): ReactElement {
                       />
                     </InputGroup>
 
-                    <InputGroup>
-                      <Input
-                        name="quantity"
-                        label={"Quantidade em Token"}
-                        onChange={ChangeCheckValue}
-                        value={saleState.quantity}
-                      />
-                    </InputGroup>
+                    <div className="token-option d-flex">
+                      <OptionToken/>
+                        <Input
+                          name="quantity"
+                          label={"Quantidade em Token"}
+                          onChange={ChangeCheckValue}
+                          value={saleState.quantity}
+                        />
+                    </div>
+
 
                     <InputGroup>
                       <Input
@@ -240,11 +244,13 @@ function WithdrawCancel(): ReactElement {
                         value={saleState.total}
                       />
                     </InputGroup>
+                    <p>* Compre entre: R$ 100,00 a R$ 1.000,00</p>
 
+                    <hr />
                     <InputGroup>
                       <Input
                         name="fee"
-                        label={"Taxas"}
+                        label={"Fee:"}
                         disabled
                         value={FormatToReal(feeTotal)}
                         style={{ textAlign: "right" }}
@@ -254,8 +260,9 @@ function WithdrawCancel(): ReactElement {
                     <InputGroup>
                       <Input
                         name="total_pay"
-                        label={"Total a Pagar"}
+                        label={"Total a pagar:"}
                         disabled
+                        readonly="readonly"
                         value={FormatToReal(totalPay) + " (Total a Pagar)"}
                         style={{ textAlign: "right" }}
                       />
@@ -274,7 +281,7 @@ function WithdrawCancel(): ReactElement {
         </div>
       </HeroContainer>
 
-      <HowToUseContainer className="container-app">
+      <HowToUseContainer className="container">
         <div className="row">
           <div className="col-lg-4">
             <div className="box-to-use">
@@ -313,7 +320,7 @@ function WithdrawCancel(): ReactElement {
         </div>
         <div className="token-list mt-4">
           
-          <div className="token-track secondary">
+          <div className="token-track mx-auto secondary">
             <div className="token ">
               <div className="d-flex align-items-center">
                 <div className="d-flex align-items-center">
@@ -450,7 +457,7 @@ function WithdrawCancel(): ReactElement {
               </div>
             </div>
           </div>
-          <div className="token-track">
+          <div className="token-track mx-auto">
             <div className="token ">
               <div className="d-flex align-items-center">
                 <div className="d-flex align-items-center">
@@ -591,7 +598,7 @@ function WithdrawCancel(): ReactElement {
         </div>
       </CapTokenCointainer>
 
-      <SocialMediaContainer className="container-app">
+      <SocialMediaContainer className="container">
         <div className="row mb-4">
           <h2>Veja nossas redes sociais</h2>
         </div>
@@ -645,7 +652,7 @@ function WithdrawCancel(): ReactElement {
           </div> 
         </div>
       </NewsletterContainer>
-      <FaqContainer className="container-app">
+      <FaqContainer className="container">
         <div className="row">
           <div className="col-lg-6">
             <p>FAQ</p>

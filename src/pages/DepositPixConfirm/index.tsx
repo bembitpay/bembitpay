@@ -41,6 +41,7 @@ function DepositPixConfirm(): ReactElement {
   const [counter, setCounter] = useState(60);
   const [paid, setPaid] = useState(false);
   const [timeCounter, setTimeCounter] = useState(new Date().getTime());
+  const [isCopied, setIsCopied] = useState("Copiar código");
   const dispatch = useDispatch();
 
   const { deposit, accountAtar }: DepositState = useSelector(
@@ -77,6 +78,14 @@ function DepositPixConfirm(): ReactElement {
     }, 3000);
   };
 
+  const paymentUrl = () => {
+    setIsCopied("Copiado!");
+    setTimeout(() => {
+      setIsCopied("Copiar código");
+    }, 3000);
+    navigator.clipboard.writeText(deposit?.payment_url);
+  }
+
   return (
     <div className="container py-5">
       <div className="row">
@@ -102,13 +111,13 @@ function DepositPixConfirm(): ReactElement {
               <BoxQrCode className="row align-items-center">
                 <div className="col-lg-6">
                   <ColumnQrCode>
-                    <QRCode value={deposit.payment_url} size={220} />
+                    <QRCode value={deposit?.payment_url} size={220} />
                   </ColumnQrCode>
                 </div>
                 <div className="col-lg-6 text-center deposit-price">
                   <span>Valor para depositar</span>
-                  <p>R$ 100,00</p>
-                  <Button className="a-primary" text={"Copiar Código"}/>
+                  <p>{FormatToReal(deposit?.total)}</p>
+                  <Button onClick={() => paymentUrl()} className="a-primary" text={isCopied}/>
                 </div>
                 <div className="col-lg-12">
                   <div className="info-qrcode d-flex align-items-center">
@@ -121,15 +130,15 @@ function DepositPixConfirm(): ReactElement {
               <BoxInfoPay className="row">
                 <div className="col-lg-12">
                   <span className="mb-4">Chave PIX</span>
-                  <p className="pix-key">00020126580014br.gov.bcb.pix013636b1bf42-ad16-4500-b6a2-2a5adaef34a55204000053039865406253.495802BR5906C01NBR6013Florianopolis61088803628062240520LIGHT55c37f1750001b26304DA32</p>
+                  <p className="pix-key">{deposit?.payment_url}</p>
                 </div>
                 <div className="col-lg-12 d-flex justify-content-between">
                   <span>Taxa total:</span>
-                  <p>R$ 9,00</p>
+                  <p>{FormatToReal(deposit?.fee)}</p>
                 </div>
                 <div className="col-lg-12 d-flex justify-content-between">
                   <span>Valor da operação:</span>
-                  <p>R$ 91,00</p>
+                  <p>{FormatToReal(deposit?.amount_receivable)}</p>
                 </div>
               </BoxInfoPay>
             </>
