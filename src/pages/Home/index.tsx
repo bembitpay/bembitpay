@@ -256,6 +256,7 @@ function WithdrawCancel(): ReactElement {
                         readonly="readonly"
                         value={FormatToReal(feeTotal)}
                         style={{ textAlign: "right" }}
+                        id="fee"
                       />
                     </InputGroup>
 

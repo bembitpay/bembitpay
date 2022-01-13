@@ -31,4 +31,5 @@ export const Content = styled.div`
   ${device.mobileMedium} {
     flex-direction: column;
   }
+  
 `;

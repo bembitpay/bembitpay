@@ -17,9 +17,10 @@ function InputComponent({
   style,
   type,
   readonly,
+  id
 }: InputProps): ReactElement {
   return (
-      <Content>
+      <Content id={id}>
         
         {mask && mask != "" ? (
           <InputMask 
@@ -50,6 +51,7 @@ function InputComponent({
           />
         ) : (
           <Input
+            
             className={"form__input " + (value.length > 0 ? "has-letter" : "") }
             placeholder=""
             readonly={readonly}

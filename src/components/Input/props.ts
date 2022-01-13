@@ -11,4 +11,5 @@ export interface InputProps {
   type?: string;
   mask?: string;
   readonly?: string;
+  id?: string;
 }

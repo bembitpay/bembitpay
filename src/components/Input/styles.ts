@@ -13,6 +13,10 @@ export const Content = styled.div`
   width: 100%;
   height: 50px;  
 
+  &#fee {
+    height: 30px !important;
+  }
+
   .form__input {
     position: absolute;
     top: 0;
