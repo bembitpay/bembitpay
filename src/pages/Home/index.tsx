@@ -253,6 +253,7 @@ function WithdrawCancel(): ReactElement {
                         name="fee"
                         label={"Fee:"}
                         disabled
+                        readonly="readonly"
                         value={FormatToReal(feeTotal)}
                         style={{ textAlign: "right" }}
                       />
