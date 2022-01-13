@@ -171,6 +171,26 @@ export const DatasContainer = styled.div`
   .content-datas {
     margin: 0 auto;
     max-width: 400px;
+
+    .edit-datas {
+      padding: 10px;
+      width: fit-content;
+      border-radius: 6px;
+      cursor: pointer;
+      
+      &:hover {
+
+        background: #F0F0F0;
+      }
+
+      p {
+        margin-bottom: 0;
+        margin-left: 10px;
+        font-weight: 500;
+      }
+
+      margin-bottom: 20px;
+    }
   }
 
   ${device.mobileSmall} {
@@ -186,6 +206,24 @@ export const InfoContainer = styled.div`
   ${device.mobileSmall} {
     margin-top: 20px;
     padding: 10px 20px;
+  }
+
+  .info-important {
+    h4 {
+      font-size: 20px;
+    }
+
+    a {
+      font-weight: bold;
+      font-size: 18px;
+      text-decoration: none;
+      color: ${(props) => props.theme.color.secondary};
+    }
+
+    p {
+      font-size: 18px;
+      opacity: 0.8;
+    }
   }
 
   .info-token {

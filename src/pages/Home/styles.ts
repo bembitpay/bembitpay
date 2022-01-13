@@ -254,7 +254,7 @@ export const HowToUseContainer = styled.section`
     }
 
     p {
-      width: 60%;
+      width: 65%;
       margin-bottom: 60px;
 
       ${device.mobileSmall} {

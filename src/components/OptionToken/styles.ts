@@ -7,6 +7,7 @@ export const Dropdown = styled.div`
 `;
 
 export const DropBnt = styled.div`
+  position: relative;
 
   label {
     position: absolute;
@@ -30,6 +31,13 @@ export const DropBnt = styled.div`
       z-index: 10;
   }
 
+  svg {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
 `;
 
 export const DropInput = styled.input`
@@ -45,7 +53,7 @@ export const DropInput = styled.input`
   &:disabled {
     background: #fff;
   }
-
+  
   &:focus ~ label {
     top: -.5rem;
     left: .8rem;

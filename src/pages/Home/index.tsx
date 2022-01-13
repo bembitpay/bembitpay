@@ -194,8 +194,8 @@ function WithdrawCancel(): ReactElement {
           <div className="row align-items-center">
             <div className="col-lg-6 col-12">
               <Title>Bem simples, <br />bem rápido, <br />#Bembit.</Title>
-              <p>Aqui você consegue fazer as compras de seus <br /> tokens usando o meio de pagamento PIX.</p>
-              <Link className="a-primary">Compre agora</Link>
+              <p>Aqui você compra tokens por<br/> pix 24 horas 7 dias por semana.</p>
+              <Link className="a-primary" href="/">Compre agora</Link>
 
               <div className="numbers-info d-flex">
                 <div className="d-flex align-items-center">
@@ -212,7 +212,7 @@ function WithdrawCancel(): ReactElement {
             <Card>
                 <>
                   <div className="title-card text-center">
-                    <h4>Compre token usando PIX</h4>
+                    <h4>Compre tokens com PIX</h4>
                   </div>
                   <div className="box-card">
                     <InputGroup>
@@ -242,6 +242,7 @@ function WithdrawCancel(): ReactElement {
                         label={"Valor em Real"}
                         onChange={ChangeCheckValue}
                         value={saleState.total}
+                        
                       />
                     </InputGroup>
                     <p>* Compre entre: R$ 100,00 a R$ 1.000,00</p>
@@ -272,6 +273,7 @@ function WithdrawCancel(): ReactElement {
                       onClick={() => handler()}
                       />
 
+                    <div id="how-to-use"></div>
                   </div>
                   </>
               </Card>
@@ -281,40 +283,41 @@ function WithdrawCancel(): ReactElement {
         </div>
       </HeroContainer>
 
-      <HowToUseContainer className="container">
+      <HowToUseContainer className="container" >
         <div className="row">
           <div className="col-lg-4">
             <div className="box-to-use">
               <h4>Selecione o token</h4>
-              <p>Ao selecionar o token, insira a quantidade de token para compra.</p>
+              <p>Insira a quantidade de token ou o valor em reais e o endereço da sua carteira.</p>
               <Link>Comprar agora</Link>
             </div>
           </div>
           <div className="col-lg-4">
             <div className="box-to-use">
-              <h4>Selecione o token</h4>
-              <p>Ao selecionar o token, insira a quantidade de token para compra.</p>
+              <h4>Faça o PIX.</h4>
+              <p>Após finalizar seu pedido, informe seus dados e envie o pix a partir do qr code.</p>
               <Link>Comprar agora</Link>
             </div>
           </div>
           <div className="col-lg-4">
             <div className="box-to-use">
-              <h4>Selecione o token</h4>
-              <p>Ao selecionar o token, insira a quantidade de token para compra.</p>
+              <h4>Tokens na carteira!</h4>
+              <p>Após a confirmação do pix, os tokens serão enviados para seu carteira automaticamente.</p>
               <Link>Comprar agora</Link>
             </div>
           </div>
         </div>
+      <div id="tokens"></div> 
       </HowToUseContainer>
 
-      <CapTokenCointainer>
-        <div className="container">
+      <CapTokenCointainer >
+        <div className="container container-app">
           <div className="row text-white title-tokens align-items-center">
             <div className="col-lg-6">
               <h2>Os tokens mais <br />vendidos no mercado</h2>
             </div>
             <div className="col-lg-6">
-              <p>Escolha um dos melhores tokens para comprar<br /> usando Pix, assim você receberá muito mais rápido<br /> em sua carteira.</p>
+              <p>Os principais e mais promissores tokens do <br /> mercado agora por  pix, 24 horas e 7 dias por <br />semana.</p>
             </div>
           </div>
         </div>
@@ -608,15 +611,15 @@ function WithdrawCancel(): ReactElement {
               <div className="box-social mb-4">
                 <p>Facebook</p>
                 <h3>Faça parte do nosso facebook</h3>
-                <Link>Ver mais</Link>
+                <Link target="blank" href="https://www.facebook.com/bembitpay">Ver mais</Link>
                 <img src={imgFacebook} alt="" />
               </div>
             </div>
             <div className="col-lg-12">
               <div className="box-social">
                 <p>LinkedIn</p>
-                <h3>Siga nossas dicas no Instagram</h3>
-                <Link>Ver mais</Link>
+                <h3>Conecte-se com a gente no Linkedin</h3>
+                <Link target="blank"  href="">Ver mais</Link>
                 <img src={imgLinkedin} alt="" />
               </div>
             </div>
@@ -626,7 +629,7 @@ function WithdrawCancel(): ReactElement {
               <div className="box-social big h-100">
                 <p>Instagram</p>
                 <h3>Siga nossas dicas no Instagram</h3>
-                <Link>Ver mais</Link>
+                <Link target="blank" href="https://www.instagram.com/bembit.pay/">Conhecer nosso instagram</Link>
                 <img src={imgInstagram} alt="" />
               </div>
             </div>
@@ -634,7 +637,7 @@ function WithdrawCancel(): ReactElement {
         </div>
       </SocialMediaContainer>
       <NewsletterContainer>
-        <div className="container">
+        <div className="container container-app">
           <div className="row">
             <div className="col-lg-6 box-newsletter text-white">
               <p>Newsletter</p>

@@ -11,6 +11,8 @@ import {
 
 import imgBitcoin from "../../assets/images/crypto/bitcoin.png"; 
 
+import { BsChevronDown } from "react-icons/bs";
+
 import options from "./options";
 
 function OptionTokenComponent({}: OptionToken): ReactElement {
@@ -33,6 +35,7 @@ function OptionTokenComponent({}: OptionToken): ReactElement {
                     className={(optionToken.length > 0 ? "has-letter" : "")} 
                 />
                 <label>{selected}</label>
+                <BsChevronDown />
 
             </DropBnt>
             {isActive && (

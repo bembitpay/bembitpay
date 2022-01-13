@@ -133,6 +133,10 @@ export default createGlobalStyle`
    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif */
   };
 
+  .container {
+    max-width: 1280px !important;
+  }
+
   .container-app {
     padding: 0 5%;
   }
@@ -148,7 +152,7 @@ export default createGlobalStyle`
     font-size: 16px;
     line-height: 19px;
     color: #505050;
-    text-align: left !important;
+    text-align: left !importdant;
     background: #FFFFFF;
     border: 1px solid #ADADAD;
     border-radius: 3px;

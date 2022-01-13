@@ -79,11 +79,11 @@ function DepositPixConfirm(): ReactElement {
   };
 
   const paymentUrl = () => {
+    navigator.clipboard.writeText(deposit?.payment_url);
     setIsCopied("Copiado!");
     setTimeout(() => {
       setIsCopied("Copiar código");
     }, 3000);
-    navigator.clipboard.writeText(deposit?.payment_url);
   }
 
   return (

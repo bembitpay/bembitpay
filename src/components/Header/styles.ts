@@ -60,11 +60,15 @@ export const HeaderContainer = styled.header`
         /* color: #fff !important; */
         font-size: 20px;
         line-height: 60px !important;
-
+        
         &:before {
           display: none;
         }
       }
+    }
+
+    a {
+      text-decoration: none;
     }
 
     li {
@@ -73,6 +77,7 @@ export const HeaderContainer = styled.header`
       margin-right: 30px;
       font-weight: 500;
       opacity: 0.6;
+      cursor: pointer !important;
 
       &:before {
         content: "";
@@ -123,7 +128,7 @@ export const Link = styled.a`
   font-weight: 500;
   border-radius: 4px;
   color: ${(props) => props.theme.color.secondary};
-  cursor: pointer;
+  cursor: pointer !important;
 
   &:hover {
     color: ${(props) => props.theme.color.secondary};

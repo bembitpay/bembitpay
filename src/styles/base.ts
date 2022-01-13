@@ -28,3 +28,30 @@ export const ContentBase = styled.div`
     padding: 0 25%;
   }
 `;
+
+export const OtherPagesBase = styled.section`
+    margin-top: 80px;
+
+    h5 {
+        font-size: 20px;
+    }
+
+    p {
+        color: #171923;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .hero-info {
+        color: #fff ;
+        padding: 60px 0;
+        background: linear-gradient(93.98deg, #273176 3.25%, #091041 96.75%);
+        margin-bottom: 60px;
+        
+        p {
+            color: #fff ;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+`;

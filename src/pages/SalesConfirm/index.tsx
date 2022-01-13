@@ -34,6 +34,8 @@ import { Button, Title, Receipt, Card, TextInfo } from "../../components";
 import { FormatToReal, FormatToRealPrice, FormatNumberBr, ValidateCpf, ValidateDate } from "../../utils";
 import { SaleState } from "../../store/modules/sale/types";
 
+import { BsArrowLeft, BsCurrencyExchange } from "react-icons/bs";
+
 import {
   listDepositsTypes,
   GetSale,
@@ -141,12 +143,17 @@ function SalesConfirm(): ReactElement {
       <div className="row">
         <DatasContainer className="col-lg-5">
           <div className="content-datas">
-            <div className="mb-2">
-              <h3>Insira seus dados</h3>
-              <p>Os dados abaixos são importantes para finalizar o pagamento dos tokens</p>
-            </div>
+            
             {showConfirm ? (
               <>
+                <div className="mb-2">
+                  <h3>Confira seu pedido antes de finalizar</h3>
+                  <p>Atenção, a BemBit não se responsailiza por informações preenchidas incorretamente.</p>
+                  <div className="mt-5 d-flex align-items-center edit-datas" onClick={() => setShowConfirm(!showConfirm)}>
+                    <BsArrowLeft />
+                    <p>Editar informaçoes</p>
+                  </div>
+                </div>
                 <TextInfo
                   label={"Nome Completo"}
                   text={datasState?.name}
@@ -174,69 +181,76 @@ function SalesConfirm(): ReactElement {
                 <Button text={"Finalizar compra"} onClick={() => handler()} />
               </>
               ) : (
-              <Card>
-                <>
-                  <div className="box-datas">
-                    <InputGroup>
-                      <Input 
-                        name="name" 
-                        label={"Nome completo"} 
-                        value={datasState?.name}
-                        onChange={setValue}
-                        />
-                    </InputGroup>
-                    <InputGroup>
-                      <Input 
-                        mask={"999.999.999-99"} 
-                        name="document" 
-                        type={"document"} 
-                        label={"CPF"} 
-                        value={datasState?.document}
-                        onChange={setValue}
-                        />
-                    </InputGroup>
-                    <InputGroup>
-                      <Input 
-                        mask={"99/99/9999"} 
-                        name="birth_date" 
-                        type={"birth_date"} 
-                        label={"Data de Nascimento"}
-                        value={datasState?.birth_date}
-                        onChange={setValue} 
-                        />
-                    </InputGroup>
-                    <InputGroup>
-                      <Input
-                        name="phone"
-                        label={"Celular"}
-                        value={datasState?.phone}
-                        onChange={setValue}
-                        />
-                    </InputGroup>
-                    <InputGroup>
-                      <Input 
-                        name="email" 
-                        label={"Email"}
-                        value={datasState?.email}
-                        onChange={setValue}
-                        />
-                    </InputGroup>
-                    <div className="mt-2">
-                      <Button text={"Finalizar compra"} onClick={() => handler()} />
+              <>
+                <div className="mb-2">
+                  <h3>Insira seus dados</h3>
+                  <p>Os dados abaixos são importantes para finalizar o pagamento dos tokens</p>
+                </div>
+                <Card>
+                  <>
+                    <div className="box-datas">
+                      <InputGroup>
+                        <Input 
+                          name="name" 
+                          label={"Nome completo"} 
+                          value={datasState?.name}
+                          onChange={setValue}
+                          />
+                      </InputGroup>
+                      <InputGroup>
+                        <Input 
+                          mask={"999.999.999-99"} 
+                          name="document" 
+                          type={"document"} 
+                          label={"CPF"} 
+                          value={datasState?.document}
+                          onChange={setValue}
+                          />
+                      </InputGroup>
+                      <InputGroup>
+                        <Input 
+                          mask={"99/99/9999"} 
+                          name="birth_date" 
+                          type={"birth_date"} 
+                          label={"Data de Nascimento"}
+                          value={datasState?.birth_date}
+                          onChange={setValue} 
+                          />
+                      </InputGroup>
+                      <InputGroup>
+                        <Input
+                          name="phone"
+                          label={"Celular"}
+                          value={datasState?.phone}
+                          onChange={setValue}
+                          />
+                      </InputGroup>
+                      <InputGroup>
+                        <Input 
+                          name="email" 
+                          label={"Email"}
+                          value={datasState?.email}
+                          onChange={setValue}
+                          />
+                      </InputGroup>
+                      <div className="mt-2">
+                        <Button text={"Finalizar compra"} onClick={() => handlerDatas()} />
 
+                      </div>
                     </div>
-                  </div>
-                </>
-              </Card>
+                  </>
+                </Card>
+              </>
             )}
             
           </div>
         </DatasContainer>
         <InfoContainer className="col-lg-7">
           <div className="row">
+          {showConfirm ? (
             <div className="col-lg-9 mx-auto">
               <div className="mb-4">
-                <h3>Informações</h3>
+                <h3>Informações de pagamento</h3>
               </div>
               <div className="row info-token d-flex">
                 <div className="col-lg-6">
@@ -271,6 +285,35 @@ function SalesConfirm(): ReactElement {
                 </div>
               </div>
             </div>
+          ) : (
+            <div className="col-lg-9 mx-auto info-important">
+              <div className="mb-4">
+                <h3>Informações bem importantes!</h3>
+              </div>
+              <div className="my-4">
+                <h4>1. Informação de seus dados</h4>
+                <p>A BemBit não se responsabiliza por informações preenchidas incorretamente. Por isso, é extremamente importante que você confira seus dados e principalmente se o endereço da sua carteira está correto e se ela tem suporte a rede <strong>Binance Smart Chain</strong> (BSC – BEP 20), caso contrário seus tokens serão perdidos.</p>
+              </div>
+
+              <div className="my-4">
+                <h4>2. Taxas cobradas</h4>
+                <p>Será cobrada taxa administrativa de <strong>R$ 5,00 + 2%</strong> (cinco reais) por compra realizada.</p>
+              </div>
+
+              <div className="my-4">
+                <h4>3. Limite de compras</h4>
+                <p>Você poderá realizar quantas comprar quiser até o limite máximo de <strong>R$ 30.000,00</strong> (trinta mil reais) por mês, caso queira aumentar seu limite, envie um e-mail para <a href="mailto:contato@bembit.com">contato@bembit.com</a>
+                </p>
+              </div>
+
+              <div className="d-flex mt-3">
+                <div style={{ marginRight: 10 }}>
+                  <BsCurrencyExchange size={25}/>
+                </div>
+                <p>Para comprar mais de um token, basta finalizar esta compra e voltar ao menu inicial.</p>
+              </div>
+            </div>
+          )}
           </div>
         </InfoContainer>
 

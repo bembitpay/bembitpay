@@ -11,42 +11,29 @@ function Footer(): ReactElement {
       <FooterContainer >
         <div className="container">
             <div className="row footer-1">
-                <div className="col-lg-8">
+                <div className="col-lg-9">
                     <div className="row">
                         <div className="col-lg-3">
                             <LinksContent>
-                                <p className="title-links">Empresa</p>
-                                <ul>
-                                    <a href="">
-                                        <li>Home</li>
-                                    </a>
-                                    <a href="">
-                                        <li>Video</li>
-                                    </a>
-                                    <a href="">
-                                        <li>Como funciona</li>
-                                    </a>
-                                    <a href="">
-                                        <li>Blog</li>
-                                    </a>
-                                </ul>
+                                <img src={Logo}/>
+                                <p className="title-links mt-4">Bem simples, <br />bem rápido,<br /> #Bembit.</p>
                             </LinksContent>
                         </div>
                         <div className="col-lg-3">
                             <LinksContent>
-                                <p className="title-links">Posts</p>
+                                <p className="title-links">Empresa</p>
                                 <ul>
-                                    <a href="">
-                                        <li>Como fuunciona a cripto</li>
+                                    <a href="/">
+                                        <li>Home</li>
                                     </a>
-                                    <a href="">
-                                        <li>Criptomoedas usando PIX</li>
+                                    <a href="/#tokens">
+                                        <li>Tokens</li>
                                     </a>
-                                    <a href="">
-                                        <li>Como fuunciona a cripto</li>
+                                    <a href="/about">
+                                        <li>Quem somos</li>
                                     </a>
-                                    <a href="">
-                                        <li>Criptomoedas usando PIX</li>
+                                    <a href="/faq">
+                                        <li>Perguntas Frequentes</li>
                                     </a>
                                 </ul>
                             </LinksContent>
@@ -55,11 +42,8 @@ function Footer(): ReactElement {
                             <LinksContent>
                                 <p className="title-links">Contato</p>
                                 <ul>
-                                    <a href="">
+                                    <a href="mailto:contato@bembit.com">
                                         <li>contato@bembit.com</li>
-                                    </a>
-                                    <a href="">
-                                        <li>faq@bembit.com</li>
                                     </a>
                                 </ul>
                             </LinksContent>
@@ -68,14 +52,14 @@ function Footer(): ReactElement {
                             <LinksContent>
                                 <p className="title-links">Redes sociais</p>
                                 <ul>
-                                    <a href="">
-                                        <li>Instagram</li>
+                                    <a target="blank" href="https://www.instagram.com/bembit.pay/">
+                                        <li>@bembit.pay</li>
+                                    </a>
+                                    <a target="blank" href="https://www.facebook.com/bembitpay">
+                                        <li>Bembit (@bembitpay)</li>
                                     </a>
                                     <a href="">
-                                        <li>Linkedin</li>
-                                    </a>
-                                    <a href="">
-                                        <li>Facebook</li>
+                                        <li>bembit.pay</li>
                                     </a>
                                 </ul>
                             </LinksContent>
@@ -97,13 +81,12 @@ function Footer(): ReactElement {
             <div className="row footer-2 align-items-center">
                 <div className="col-lg-6 d-flex">
                     <img src={Logo} />
-                    <a href="">Termos de privacidade</a>
-                    <a href="">Informações do Cookie</a>
+                    <a href="/terms">Termos de privacidade</a>
                 </div>
                 <div className="col-lg-6 d-flex justify-content-end socials">
                     <ul className="d-flex">
                         <li>
-                            <a href="">
+                            <a target="blank" href="https://www.instagram.com/bembit.pay/">
                                 <BsInstagram size={20}/>
                             </a>
                         </li>
@@ -113,7 +96,7 @@ function Footer(): ReactElement {
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="blank" href="https://www.facebook.com/bembitpay">
                                 <BsFacebook size={20} />    
                             </a>
                         </li>

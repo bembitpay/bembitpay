@@ -6,6 +6,10 @@ import { GeneralState } from "../store/modules/general/types";
 import { AnimatedSwitch, spring } from "react-router-transition";
 
 import Home from "../pages/Home";
+import AboutUs from "../pages/AboutUs";
+import Tax from "../pages/Tax";
+import Terms from "../pages/Terms";
+import Faq from "../pages/Faq";
 
 import Deposit from "../pages/Deposit";
 import Sales from "../pages/Sales";
@@ -90,6 +94,10 @@ export default function Routes() {
           mapStyles={mapStyles}
         >
           <Route path="/" exact component={Home} />
+          <Route path="/about" exact component={AboutUs} />
+          {/* <Route path="/taxs" exact component={Tax} /> */}
+          <Route path="/terms" exact component={Terms} />
+          <Route path="/faq" exact component={Faq} />
           <Route path="/deposit/:token" exact component={Deposit} />
           <Route path="/sale" exact component={Sales} />
           <Route path="/sale/confirm" exact component={SalesConfirm} />
